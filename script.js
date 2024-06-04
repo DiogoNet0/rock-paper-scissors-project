@@ -1,23 +1,11 @@
-/* let getComputerChoice = Math.floor(Math.random() * 3);
-let computerString;
-
-if (getComputerChoice === 0) {
-  computerString = "Rock!";
-} else if (getComputerChoice === 1) {
-  computerString = "Paper!";
-} else {
-  computerString = "Scissors!";
-}
-alert(computerString);
-
- */
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
-  const choices = ["Rock!", "Paper!", "Scissors!"];
+  const choices = ["rock", "paper", "scissors"];
   const randomIndex = Math.floor(Math.random() * choices.length);
   return choices[randomIndex];
 }
-console.log(getComputerChoice());
 
 function getHumanChoice() {
   const userInput = prompt(
@@ -37,4 +25,8 @@ function getHumanChoice() {
 }
 
 const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
 console.log(humanChoice);
+console.log(computerChoice);
+
+function playRound(humanChoice, computerChoice) {}
