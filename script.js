@@ -10,7 +10,6 @@ if (getComputerChoice === 0) {
 }
 alert(computerString);
 
-let getHumanChoice = prompt("Rock, Paper or Scissors?", "");
  */
 
 function getComputerChoice() {
@@ -19,3 +18,23 @@ function getComputerChoice() {
   return choices[randomIndex];
 }
 console.log(getComputerChoice());
+
+function getHumanChoice() {
+  const userInput = prompt(
+    "Enter your choice (rock, paper, scissors): "
+  ).toLowerCase();
+
+  if (
+    userInput === "rock" ||
+    userInput === "paper" ||
+    userInput === "scissors"
+  ) {
+    return userInput;
+  } else {
+    console.log("Invalid choice! Please enter rock, paper, or scissors.");
+    return getHumanChoice();
+  }
+}
+
+const humanChoice = getHumanChoice();
+console.log(humanChoice);
