@@ -1,4 +1,4 @@
-let getComputerChoice = Math.floor(Math.random() * 3);
+/* let getComputerChoice = Math.floor(Math.random() * 3);
 let computerString;
 
 if (getComputerChoice === 0) {
@@ -11,3 +11,11 @@ if (getComputerChoice === 0) {
 alert(computerString);
 
 let getHumanChoice = prompt("Rock, Paper or Scissors?", "");
+ */
+
+function getComputerChoice() {
+  const choices = ["Rock!", "Paper!", "Scissors!"];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
+}
+console.log(getComputerChoice());
