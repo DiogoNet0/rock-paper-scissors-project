@@ -1,3 +1,4 @@
+const GREEN = "\u001b[32m";
 let playerScore = 0; // Keeps track of Player´ score
 let computerScore = 0; // Keeps track of Computer´ score
 
@@ -26,8 +27,13 @@ function getPlayerChoice() {
 
 const playerChoice = getPlayerChoice();
 const computerChoice = getComputerChoice();
-console.log("You chose: ", playerChoice);
-console.log("The Computer chose: ", computerChoice);
+console.log(
+  "You chose: ",
+  playerChoice,
+  " | ",
+  "The Computer chose: ",
+  computerChoice
+);
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
@@ -49,6 +55,8 @@ function playRound(playerChoice, computerChoice) {
 
 const playResult = playRound(playerChoice, computerChoice);
 alert(playResult);
+console.log(playResult, GREEN);
+
 console.log("Player - ", playerScore);
 console.log("Computer - ", computerScore);
 
