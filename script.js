@@ -9,23 +9,23 @@ function playGame() {
 
   // Randomly generates a choice for the game
   function getComputerChoice() {
-    const choices = ["rock", "paper", "scissors"];
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
+    const CHOICES = ["rock", "paper", "scissors"];
+    const RANDOM_INDEX = Math.floor(Math.random() * CHOICES.length);
+    return CHOICES[RANDOM_INDEX];
   }
 
   // Gets an input from the player and checks if its valid or not
   function getPlayerChoice() {
-    const userInput = prompt(
+    const USER_INPUT = prompt(
       "Enter your choice (rock, paper, scissors): "
     ).toLowerCase();
 
     if (
-      userInput === "rock" ||
-      userInput === "paper" ||
-      userInput === "scissors"
+      USER_INPUT === "rock" ||
+      USER_INPUT === "paper" ||
+      USER_INPUT === "scissors"
     ) {
-      return userInput;
+      return USER_INPUT;
     } else {
       console.log("Invalid choice! Please enter rock, paper, or scissors.");
       return getPlayerChoice();
@@ -53,9 +53,9 @@ function playGame() {
 
   // Play 5 rounds
   for (i = 0; i < 5; i++) {
-    const playerChoice = getPlayerChoice();
-    const computerChoice = getComputerChoice();
-    const result = playRound(playerChoice, computerChoice);
+    const PLAYER_CHOICE = getPlayerChoice();
+    const COMPUTER_CHOICE = getComputerChoice();
+    const result = playRound(PLAYER_CHOICE, COMPUTER_CHOICE);
     alert(result);
     console.log(`%cRound ${i + 1}: ${result}`, "font-size:20px");
   }
