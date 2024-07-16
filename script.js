@@ -7,6 +7,11 @@ function playGame() {
   const PLAYER_LETTER = "font-size:20px; color: green;";
   const COMPUTER_LETTER = "font-size:20px; color: red;";
 
+  // Button selectors
+  const ninja = document.querySelector("#ninja");
+  const samurai = document.querySelector("#samurai");
+  const oni = document.querySelector("#oni");
+
   // Randomly generates a choice for the game
   function getComputerChoice() {
     const CHOICES = ["rock", "paper", "scissors"];
@@ -14,7 +19,7 @@ function playGame() {
     return CHOICES[RANDOM_INDEX];
   }
 
-  // Gets an input from the player and checks if its valid or not
+  /*   // Gets an input from the player and checks if its valid or not
   function getPlayerChoice() {
     const USER_INPUT = prompt(
       "Enter your choice (rock, paper, scissors): "
@@ -30,7 +35,12 @@ function playGame() {
       console.log("Invalid choice! Please enter rock, paper, or scissors.");
       return getPlayerChoice();
     }
-  }
+  } */
+
+  //Buttons detect playRound
+  ninja.addEventListener("click", playerClick());
+  samurai.addEventListener("click", playerClick());
+  oni.addEventListener("click", playerClick());
 
   // Converts the functions to variables
   function playRound(playerChoice, computerChoice) {
@@ -52,13 +62,13 @@ function playGame() {
   }
 
   // Play 5 rounds
-  for (i = 0; i < 5; i++) {
+  /*   for (i = 0; i < 5; i++) {
     const PLAYER_CHOICE = getPlayerChoice();
     const COMPUTER_CHOICE = getComputerChoice();
     const result = playRound(PLAYER_CHOICE, COMPUTER_CHOICE);
     alert(result);
     console.log(`%cRound ${i + 1}: ${result}`, "font-size:20px");
-  }
+  } */
 
   // Declare the winner
   console.log("%cPlayer Score:", PLAYER_LETTER, playerScore);
