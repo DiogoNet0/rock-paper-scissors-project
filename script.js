@@ -8,9 +8,9 @@ function playGame() {
   const COMPUTER_LETTER = "font-size:20px; color: red;";
 
   // Button selectors
-  const ninja = document.querySelector("#ninja");
-  const samurai = document.querySelector("#samurai");
-  const oni = document.querySelector("#oni");
+  const btnNinja = document.querySelector("#ninja");
+  const btnSamurai = document.querySelector("#samurai");
+  const btnOni = document.querySelector("#oni");
 
   // Randomly generates a choice for the game
   function getComputerChoice() {
@@ -19,6 +19,17 @@ function playGame() {
     return CHOICES[RANDOM_INDEX];
   }
 
+  // Check button click
+
+  function btnClick(e) {
+    const playerChoice = e.target.id;
+    const result = playRound(playerChoice);
+    console.log(result);
+  }
+
+  btnNinja.addEventListener("click", btnClick);
+  btnSamurai.addEventListener("click", btnClick);
+  btnOni.addEventListener("click", btnClick);
   /*   // Gets an input from the player and checks if its valid or not
   function getPlayerChoice() {
     const USER_INPUT = prompt(
@@ -38,9 +49,9 @@ function playGame() {
   } */
 
   //Buttons detect playRound
-  ninja.addEventListener("click", playerClick());
+  /* ninja.addEventListener("click", playerClick());
   samurai.addEventListener("click", playerClick());
-  oni.addEventListener("click", playerClick());
+  oni.addEventListener("click", playerClick()); */
 
   // Converts the functions to variables
   function playRound(playerChoice, computerChoice) {
