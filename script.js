@@ -3,94 +3,75 @@ function playGame() {
   let playerScore = 0;
   let computerScore = 0;
 
-  // Styles for Win/Loss Message
-  const PLAYER_LETTER = "font-size:20px; color: green;";
-  const COMPUTER_LETTER = "font-size:20px; color: red;";
-
   // Button selectors
   const btnNinja = document.querySelector("#ninja");
   const btnSamurai = document.querySelector("#samurai");
   const btnOni = document.querySelector("#oni");
 
+  // Score selectors
+  const playerScoreDisplay = document.querySelector("#player-score");
+  const computerScoreDisplay = document.querySelector("#computer-score");
+
+  // Result display selector
+  const resultDisplay = document.querySelector("#result");
+
   // Randomly generates a choice for the game
   function getComputerChoice() {
-    const CHOICES = ["rock", "paper", "scissors"];
+    const CHOICES = ["ninja", "samurai", "oni"];
     const RANDOM_INDEX = Math.floor(Math.random() * CHOICES.length);
     return CHOICES[RANDOM_INDEX];
   }
 
-  // Check button click
+  // Handle button clicks
+  function handleButtonClick(event) {
+    const playerChoice = event.target.id;
+    const result = playRound(playerChoice, getComputerChoice());
+    resultDisplay.textContent = result;
 
-  function btnClick(e) {
-    const playerChoice = e.target.id;
-    const result = playRound(playerChoice);
-    console.log(result);
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+
+    if (playerScore === 5 || computerScore === 5) {
+      declareWinner();
+    }
   }
 
-  btnNinja.addEventListener("click", btnClick);
-  btnSamurai.addEventListener("click", btnClick);
-  btnOni.addEventListener("click", btnClick);
-  /*   // Gets an input from the player and checks if its valid or not
-  function getPlayerChoice() {
-    const USER_INPUT = prompt(
-      "Enter your choice (rock, paper, scissors): "
-    ).toLowerCase();
-
-    if (
-      USER_INPUT === "rock" ||
-      USER_INPUT === "paper" ||
-      USER_INPUT === "scissors"
-    ) {
-      return USER_INPUT;
-    } else {
-      console.log("Invalid choice! Please enter rock, paper, or scissors.");
-      return getPlayerChoice();
-    }
-  } */
-
-  //Buttons detect playRound
-  /* ninja.addEventListener("click", playerClick());
-  samurai.addEventListener("click", playerClick());
-  oni.addEventListener("click", playerClick()); */
-
-  // Converts the functions to variables
+  // Play one round and return the result
   function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
       return "It's a draw!";
-    } else if (playerChoice === "rock" && computerChoice === "scissors") {
+    } else if (
+      (playerChoice === "ninja" && computerChoice === "oni") ||
+      (playerChoice === "samurai" && computerChoice === "ninja") ||
+      (playerChoice === "oni" && computerChoice === "samurai")
+    ) {
       playerScore++;
-      return "You Win! Rock beats Scissors!";
-    } else if (playerChoice === "scissors" && computerChoice === "paper") {
-      playerScore++;
-      return "You Win! Scissors beats Paper!";
-    } else if (playerChoice === "paper" && computerChoice === "rock") {
-      playerScore++;
-      return "You Win! Paper beats Rock";
+      return `You Win! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`;
     } else {
       computerScore++;
-      return "You Lost!";
+      return `You Lost! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)}!`;
     }
   }
 
-  // Play 5 rounds
-  /*   for (i = 0; i < 5; i++) {
-    const PLAYER_CHOICE = getPlayerChoice();
-    const COMPUTER_CHOICE = getComputerChoice();
-    const result = playRound(PLAYER_CHOICE, COMPUTER_CHOICE);
-    alert(result);
-    console.log(`%cRound ${i + 1}: ${result}`, "font-size:20px");
-  } */
-
   // Declare the winner
-  console.log("%cPlayer Score:", PLAYER_LETTER, playerScore);
-  console.log("%cComputer Score:", COMPUTER_LETTER, computerScore);
-  if (playerScore > computerScore) {
-    console.log("%cCongratulations! You won the game!", "font-size:35px");
-  } else if (playerScore < computerScore) {
-    console.log("%cOH NO! The computer won the game!", "font-size:35px");
-  } else {
-    console.log("%cThe game is a draw!", "font-size:35px");
+  function declareWinner() {
+    if (playerScore > computerScore) {
+      resultDisplay.textContent = "Congratulations! You won the game!";
+    } else {
+      resultDisplay.textContent = "OH NO! The computer won the game!";
+    }
+
+    // Reset scores for a new game
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
   }
+
+  // Attach event listeners to buttons
+  btnNinja.addEventListener("click", handleButtonClick);
+  btnSamurai.addEventListener("click", handleButtonClick);
+  btnOni.addEventListener("click", handleButtonClick);
 }
 
 playGame();
