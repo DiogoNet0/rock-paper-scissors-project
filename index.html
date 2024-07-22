@@ -4,19 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
-    <script src="./script.js" defer></script>
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header>
+      <h1>Choose your fighter:</h1>
+    </header>
+    <div class="playing-area">
+      <img src="https://placehold.co/300" alt="Player Choice" />
+      <div class="score">
+        <span id="player-score">0</span>
+        <span>-</span>
+        <span id="computer-score">0</span>
+      </div>
+      <img src="https://placehold.co/300" alt="Computer Choice" />
+    </div>
+
     <div class="btns">
-      <button id="ninja">NINJA</button>
+      <button id="ninja">
+        <img src="./images/ninja.png" alt="Ninja Icon" />
+      </button>
       <button id="samurai">SAMURAI</button>
       <button id="oni">ONI</button>
     </div>
-    <div class="score">
-      <span id="player-score">0</span>
-      <span>-</span>
-      <span id="computer-score">0</span>
-    </div>
+
     <div id="result"></div>
+    <footer>
+      <p>Crafted by Diogo Neto</p>
+      <a
+        href="https://github.com/DiogoNet0"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="./images/github.png" alt="Github Icon" id="github"
+      /></a>
+    </footer>
   </body>
 </html>
