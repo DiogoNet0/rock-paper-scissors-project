@@ -36,7 +36,7 @@ header {
 
 h1 {
   font-size: 10rem;
-  font-weight: 300;
+  font-weight: 200;
 }
 
 .playing-area {
@@ -46,6 +46,17 @@ h1 {
   justify-content: space-around;
   align-items: center;
   padding: 1rem 0;
+}
+
+.player-selection {
+  display: flex;
+  justify-content: center;
+  align-items:center
+  flex-flow: column nowrap;
+}
+
+.score {
+  font-size: 15rem;
 }
 
 .btns {
