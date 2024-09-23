@@ -4,16 +4,16 @@ function playGame() {
   let computerScore = 0;
 
   // Button selectors
-  const btnNinja = document.querySelector("#ninja");
-  const btnSamurai = document.querySelector("#samurai");
-  const btnOni = document.querySelector("#oni");
+  const BTN_NINJA = document.querySelector("#ninja");
+  const BTN_SAMURAI = document.querySelector("#samurai");
+  const BTN_ONI = document.querySelector("#oni");
 
   // Score selectors
-  const playerScoreDisplay = document.querySelector("#player-score");
-  const computerScoreDisplay = document.querySelector("#computer-score");
+  const PLAYER_SCORE_DISPLAY = document.querySelector("#player-score");
+  const COMPUTER_SCORE_DISPLAY = document.querySelector("#computer-score");
 
   // Result display selector
-  const resultDisplay = document.querySelector("#result");
+  const RESULT_DISPLAY = document.querySelector("#result");
 
   // Randomly generates a choice for the game
   function getComputerChoice() {
@@ -24,12 +24,12 @@ function playGame() {
 
   // Handle button clicks
   function handleButtonClick(event) {
-    const playerChoice = event.target.id;
-    const result = playRound(playerChoice, getComputerChoice());
-    resultDisplay.textContent = result;
+    const PLAYER_CHOICE = event.target.id;
+    const RESULT = playRound(PLAYER_CHOICE, getComputerChoice());
+    RESULT_DISPLAY.textContent = RESULT;
 
-    playerScoreDisplay.textContent = playerScore;
-    computerScoreDisplay.textContent = computerScore;
+    PLAYER_SCORE_DISPLAY.textContent = playerScore;
+    COMPUTER_SCORE_DISPLAY.textContent = computerScore;
 
     if (playerScore === 5 || computerScore === 5) {
       declareWinner();
@@ -37,41 +37,41 @@ function playGame() {
   }
 
   // Play one round and return the result
-  function playRound(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice) {
+  function playRound(PLAYER_CHOICE, computerChoice) {
+    if (PLAYER_CHOICE === computerChoice) {
       return "It's a draw!";
     } else if (
-      (playerChoice === "ninja" && computerChoice === "oni") ||
-      (playerChoice === "samurai" && computerChoice === "ninja") ||
-      (playerChoice === "oni" && computerChoice === "samurai")
+      (PLAYER_CHOICE === "ninja" && computerChoice === "oni") ||
+      (PLAYER_CHOICE === "samurai" && computerChoice === "ninja") ||
+      (PLAYER_CHOICE === "oni" && computerChoice === "samurai")
     ) {
       playerScore++;
-      return `You Win! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`;
+      return `You Win! ${PLAYER_CHOICE.charAt(0).toUpperCase() + PLAYER_CHOICE.slice(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}!`;
     } else {
       computerScore++;
-      return `You Lost! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)}!`;
+      return `You Lost! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${PLAYER_CHOICE.charAt(0).toUpperCase() + PLAYER_CHOICE.slice(1)}!`;
     }
   }
 
   // Declare the winner
   function declareWinner() {
     if (playerScore > computerScore) {
-      resultDisplay.textContent = "Congratulations! You won the game!";
+      RESULT_DISPLAY.textContent = "Congratulations! You won the game!";
     } else {
-      resultDisplay.textContent = "OH NO! The computer won the game!";
+      RESULT_DISPLAY.textContent = "OH NO! The computer won the game!";
     }
 
     // Reset scores for a new game
     playerScore = 0;
     computerScore = 0;
-    playerScoreDisplay.textContent = playerScore;
-    computerScoreDisplay.textContent = computerScore;
+    PLAYER_SCORE_DISPLAY.textContent = playerScore;
+    COMPUTER_SCORE_DISPLAY.textContent = computerScore;
   }
 
   // Attach event listeners to buttons
-  btnNinja.addEventListener("click", handleButtonClick);
-  btnSamurai.addEventListener("click", handleButtonClick);
-  btnOni.addEventListener("click", handleButtonClick);
+  BTN_NINJA.addEventListener("click", handleButtonClick);
+  BTN_SAMURAI.addEventListener("click", handleButtonClick);
+  BTN_ONI.addEventListener("click", handleButtonClick);
 }
 
 playGame();
